@@ -1,0 +1,29 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "differ",
+				"type": "Text"
+			},
+			"desc": {
+				"__TYPE__": "FieldContent",
+				"value": "fully",
+				"type": "Text"
+			},
+			"buttontext": {
+				"__TYPE__": "FieldContent",
+				"value": "paragraph",
+				"type": "Text"
+			},
+			"buttonvalue": {
+				"__TYPE__": "FieldContent",
+				"value": "begun",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

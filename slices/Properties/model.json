@@ -1,0 +1,41 @@
+{
+  "id": "properties",
+  "type": "SharedSlice",
+  "name": "Properties",
+  "description": "Properties",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "img": {
+          "type": "Image",
+          "config": {
+            "label": "img",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "desc": {
+          "type": "Text",
+          "config": {
+            "label": "desc",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

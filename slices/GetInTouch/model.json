@@ -1,0 +1,47 @@
+{
+    "id": "title_desc_btn",
+    "type": "SharedSlice",
+    "name": "GetInTouch",
+    "description": "TitleDescBtn",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {
+                "title": {
+                    "type": "Text",
+                    "config": {
+                        "label": "title",
+                        "placeholder": ""
+                    }
+                },
+                "desc": {
+                    "type": "Text",
+                    "config": {
+                        "label": "desc",
+                        "placeholder": ""
+                    }
+                },
+                "buttontext": {
+                    "type": "Text",
+                    "config": {
+                        "label": "buttonText",
+                        "placeholder": ""
+                    }
+                },
+                "buttonvalue": {
+                    "type": "Text",
+                    "config": {
+                        "label": "buttonValue",
+                        "placeholder": ""
+                    }
+                }
+            },
+            "items": {}
+        }
+    ]
+}
