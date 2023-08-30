@@ -19,6 +19,15 @@
                     "choices": {
                         "services": {
                             "type": "SharedSlice"
+                        },
+                        "service_hero": {
+                            "type": "SharedSlice"
+                        },
+                        "service_projects": {
+                            "type": "SharedSlice"
+                        },
+                        "title_desc_btn": {
+                            "type": "SharedSlice"
                         }
                     }
                 }

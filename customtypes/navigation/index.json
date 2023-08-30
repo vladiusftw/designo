@@ -1,0 +1,133 @@
+{
+    "id": "navigation",
+    "label": "Navigation",
+    "format": "page",
+    "repeatable": false,
+    "status": true,
+    "json": {
+        "Main": {
+            "headerlogo": {
+                "type": "Image",
+                "config": {
+                    "label": "headerLogo",
+                    "constraint": {},
+                    "thumbnails": []
+                }
+            },
+            "navlinks": {
+                "type": "Group",
+                "config": {
+                    "label": "navLinks",
+                    "fields": {
+                        "text": {
+                            "type": "Text",
+                            "config": {
+                                "label": "text",
+                                "placeholder": ""
+                            }
+                        },
+                        "value": {
+                            "type": "Text",
+                            "config": {
+                                "label": "value",
+                                "placeholder": ""
+                            }
+                        }
+                    }
+                }
+            },
+            "footerlogo": {
+                "type": "Image",
+                "config": {
+                    "label": "footerLogo",
+                    "constraint": {},
+                    "thumbnails": []
+                }
+            },
+            "footerlocations": {
+                "type": "Group",
+                "config": {
+                    "label": "footerLocations",
+                    "fields": {
+                        "text": {
+                            "type": "StructuredText",
+                            "config": {
+                                "label": "text",
+                                "placeholder": "",
+                                "allowTargetBlank": true,
+                                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                            }
+                        }
+                    }
+                }
+            },
+            "footercontacts": {
+                "type": "Group",
+                "config": {
+                    "label": "footerContacts",
+                    "fields": {
+                        "text": {
+                            "type": "StructuredText",
+                            "config": {
+                                "label": "text",
+                                "placeholder": "",
+                                "allowTargetBlank": true,
+                                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                            }
+                        }
+                    }
+                }
+            },
+            "footersocials": {
+                "type": "Group",
+                "config": {
+                    "label": "footerSocials",
+                    "fields": {
+                        "img": {
+                            "type": "Image",
+                            "config": {
+                                "label": "img",
+                                "constraint": {},
+                                "thumbnails": []
+                            }
+                        }
+                    }
+                }
+            },
+            "slices": {
+                "type": "Slices",
+                "fieldset": "Slice Zone",
+                "config": {
+                    "choices": {}
+                }
+            }
+        },
+        "SEO & Metadata": {
+            "meta_description": {
+                "config": {
+                    "label": "Meta Description",
+                    "placeholder": "A brief summary of the page"
+                },
+                "type": "Text"
+            },
+            "meta_image": {
+                "config": {
+                    "constraint": {
+                        "height": 1260,
+                        "width": 2400
+                    },
+                    "label": "Meta Image",
+                    "thumbnails": []
+                },
+                "type": "Image"
+            },
+            "meta_title": {
+                "config": {
+                    "label": "Meta Title",
+                    "placeholder": "A title of the page used for social media and search engines"
+                },
+                "type": "Text"
+            }
+        }
+    }
+}

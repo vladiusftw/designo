@@ -1,5 +1,5 @@
 'use client'
-import { HeaderLink, headerLinks } from '@/data'
+// import { HeaderLink, headerLinks } from '@/data'
 import ReactHamburger from 'hamburger-react'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -16,7 +16,7 @@ const Hamburger = ({}: Props) => {
                         isOpen ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
-                    {headerLinks.map((link: HeaderLink) => {
+                    {/* {headerLinks.map((link: HeaderLink) => {
                         return (
                             <Link
                                 href={link?.value ?? '#'}
@@ -25,7 +25,7 @@ const Hamburger = ({}: Props) => {
                                 {link?.title}
                             </Link>
                         )
-                    })}
+                    })} */}
                 </div>
             </div>
         </div>

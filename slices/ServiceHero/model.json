@@ -1,0 +1,33 @@
+{
+  "id": "service_hero",
+  "type": "SharedSlice",
+  "name": "ServiceHero",
+  "description": "ServiceHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "desc": {
+          "type": "Text",
+          "config": {
+            "label": "desc",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

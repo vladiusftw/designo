@@ -70,7 +70,219 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
     prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>
 
-type ServicesDocumentDataSlicesSlice = ServicesSlice
+/**
+ * Item in *Navigation → navLinks*
+ */
+export interface NavigationDocumentDataNavlinksItem {
+    /**
+     * text field in *Navigation → navLinks*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.navlinks[].text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    text: prismic.KeyTextField
+
+    /**
+     * value field in *Navigation → navLinks*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.navlinks[].value
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    value: prismic.KeyTextField
+}
+
+/**
+ * Item in *Navigation → footerLocations*
+ */
+export interface NavigationDocumentDataFooterlocationsItem {
+    /**
+     * text field in *Navigation → footerLocations*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footerlocations[].text
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    text: prismic.RichTextField
+}
+
+/**
+ * Item in *Navigation → footerContacts*
+ */
+export interface NavigationDocumentDataFootercontactsItem {
+    /**
+     * text field in *Navigation → footerContacts*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footercontacts[].text
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    text: prismic.RichTextField
+}
+
+/**
+ * Item in *Navigation → footerSocials*
+ */
+export interface NavigationDocumentDataFootersocialsItem {
+    /**
+     * img field in *Navigation → footerSocials*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footersocials[].img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+}
+
+type NavigationDocumentDataSlicesSlice = never
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+    /**
+     * headerLogo field in *Navigation*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.headerlogo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    headerlogo: prismic.ImageField<never>
+
+    /**
+     * navLinks field in *Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.navlinks[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    navlinks: prismic.GroupField<Simplify<NavigationDocumentDataNavlinksItem>>
+
+    /**
+     * footerLogo field in *Navigation*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footerlogo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    footerlogo: prismic.ImageField<never>
+
+    /**
+     * footerLocations field in *Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footerlocations[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    footerlocations: prismic.GroupField<
+        Simplify<NavigationDocumentDataFooterlocationsItem>
+    >
+
+    /**
+     * footerContacts field in *Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footercontacts[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    footercontacts: prismic.GroupField<
+        Simplify<NavigationDocumentDataFootercontactsItem>
+    >
+
+    /**
+     * footerSocials field in *Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.footersocials[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    footersocials: prismic.GroupField<
+        Simplify<NavigationDocumentDataFootersocialsItem>
+    >
+
+    /**
+     * Slice Zone field in *Navigation*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>
+    /**
+     * Meta Description field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: navigation.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField
+
+    /**
+     * Meta Image field in *Navigation*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>
+
+    /**
+     * Meta Title field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: navigation.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_title: prismic.KeyTextField
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithoutUID<
+        Simplify<NavigationDocumentData>,
+        'navigation',
+        Lang
+    >
+
+type ServicesDocumentDataSlicesSlice =
+    | ServicesSlice
+    | ServiceHeroSlice
+    | ServiceProjectsSlice
+    | TitleDescBtnSlice
 
 /**
  * Content for Services documents
@@ -136,7 +348,10 @@ export type ServicesDocument<Lang extends string = string> =
         Lang
     >
 
-export type AllDocumentTypes = HomeDocument | ServicesDocument
+export type AllDocumentTypes =
+    | HomeDocument
+    | NavigationDocument
+    | ServicesDocument
 
 /**
  * Primary content in *Properties → Items*
@@ -201,6 +416,126 @@ type PropertiesSliceVariation = PropertiesSliceDefault
 export type PropertiesSlice = prismic.SharedSlice<
     'properties',
     PropertiesSliceVariation
+>
+
+/**
+ * Primary content in *ServiceHero → Primary*
+ */
+export interface ServiceHeroSliceDefaultPrimary {
+    /**
+     * title field in *ServiceHero → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_hero.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * desc field in *ServiceHero → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_hero.primary.desc
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    desc: prismic.KeyTextField
+}
+
+/**
+ * Default variation for ServiceHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiceHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ServiceHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ServiceHero*
+ */
+type ServiceHeroSliceVariation = ServiceHeroSliceDefault
+
+/**
+ * ServiceHero Shared Slice
+ *
+ * - **API ID**: `service_hero`
+ * - **Description**: ServiceHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiceHeroSlice = prismic.SharedSlice<
+    'service_hero',
+    ServiceHeroSliceVariation
+>
+
+/**
+ * Primary content in *ServiceProjects → Items*
+ */
+export interface ServiceProjectsSliceDefaultItem {
+    /**
+     * img field in *ServiceProjects → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_projects.items[].img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+
+    /**
+     * title field in *ServiceProjects → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_projects.items[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * desc field in *ServiceProjects → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_projects.items[].desc
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    desc: prismic.KeyTextField
+}
+
+/**
+ * Default variation for ServiceProjects Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiceProjectsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Record<string, never>,
+    Simplify<ServiceProjectsSliceDefaultItem>
+>
+
+/**
+ * Slice variation for *ServiceProjects*
+ */
+type ServiceProjectsSliceVariation = ServiceProjectsSliceDefault
+
+/**
+ * ServiceProjects Shared Slice
+ *
+ * - **API ID**: `service_projects`
+ * - **Description**: ServiceProjects
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiceProjectsSlice = prismic.SharedSlice<
+    'service_projects',
+    ServiceProjectsSliceVariation
 >
 
 /**
@@ -451,6 +786,9 @@ declare module '@prismicio/client' {
             HomeDocument,
             HomeDocumentData,
             HomeDocumentDataSlicesSlice,
+            NavigationDocument,
+            NavigationDocumentData,
+            NavigationDocumentDataSlicesSlice,
             ServicesDocument,
             ServicesDocumentData,
             ServicesDocumentDataSlicesSlice,
@@ -458,6 +796,12 @@ declare module '@prismicio/client' {
             PropertiesSlice,
             PropertiesSliceVariation,
             PropertiesSliceDefault,
+            ServiceHeroSlice,
+            ServiceHeroSliceVariation,
+            ServiceHeroSliceDefault,
+            ServiceProjectsSlice,
+            ServiceProjectsSliceVariation,
+            ServiceProjectsSliceDefault,
             ServicesSlice,
             ServicesSliceVariation,
             ServicesSliceDefault,

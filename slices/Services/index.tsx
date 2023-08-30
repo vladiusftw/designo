@@ -2,7 +2,7 @@ import { Content } from '@prismicio/client'
 import { SliceComponentProps } from '@prismicio/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import RightArrow from '@/public/right_arrow.svg'
+// import RightArrow from '@/public/right_arrow.svg'
 
 /**
  * Props for `Services`.
@@ -27,7 +27,7 @@ const Services = ({ slice }: ServicesProps): JSX.Element => {
                                     src={category?.img?.url ?? ''}
                                     alt={category?.img?.alt ?? ''}
                                     fill
-                                    className={`absolute rounded-[15px] group-hover:scale-125 transition-transform duration-500 object-cover object-top`}
+                                    className={`absolute rounded-[15px] group-hover:scale-125 transition-transform duration-300 object-cover object-top`}
                                 />
 
                                 <div className="bg-[#00000080] hover:bg-[#e7816bcc] z-20 w-full h-full flex flex-col items-center justify-center gap-[24px] rounded-[15px]">
@@ -38,7 +38,7 @@ const Services = ({ slice }: ServicesProps): JSX.Element => {
                                         <span className="uppercase text-white font-medium">
                                             view projects
                                         </span>
-                                        <Image src={RightArrow} alt="" />
+                                        {/* <Image src={RightArrow} alt="" /> */}
                                     </div>
                                 </div>
                             </div>
