@@ -8,7 +8,7 @@ import { Content } from '@prismicio/client'
 import { NavigationDocument } from '@/prismicio-types'
 import { redirect } from 'next/navigation'
 
-const inter = Inter({ subsets: ['latin'] })
+export const revalidate = 30
 
 export const metadata: Metadata = {
     title: 'Create Next App',
