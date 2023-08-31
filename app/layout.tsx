@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import Footer from '@/components/layout/footer'
 import { createClient } from '@/prismicio'
 import { Content } from '@prismicio/client'
+import { NavigationDocument } from '@/prismicio-types'
+import { redirect } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +21,13 @@ export default async function RootLayout({
     children: React.ReactNode
 }) {
     const client = createClient()
-    const nav = await client.getSingle<Content.NavigationDocument>('navigation')
+    let nav: NavigationDocument | null = null
+    try {
+        nav = await client.getSingle<Content.NavigationDocument>('navigation')
+    } catch (e) {
+        redirect('/404')
+    }
+
     return (
         <html lang="en">
             <body className="bg-white">
@@ -27,7 +35,7 @@ export default async function RootLayout({
                     headerLogo={nav?.data?.headerlogo}
                     links={nav?.data?.navlinks}
                 />
-                <div className="flex flex-col items-center justify-between pt-[120px] md:pt-[150px] min-h-screen">
+                <div className="flex flex-col items-center justify-between pt-[120px] md:pt-[160px] min-h-screen">
                     <div className="max-w-[1300px] w-full">{children}</div>
                     <Footer
                         footerLogo={nav?.data?.footerlogo}

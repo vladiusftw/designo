@@ -13,8 +13,6 @@ export type TitleDescImgBtnProps =
  * Component for "TitleDescImgBtn" Slices.
  */
 const TitleDescImgBtn = ({ slice }: TitleDescImgBtnProps): JSX.Element => {
-    console.log(slice)
-
     return (
         <section
             data-slice-type={slice.slice_type}
@@ -32,6 +30,7 @@ const TitleDescImgBtn = ({ slice }: TitleDescImgBtnProps): JSX.Element => {
                         <LightButton
                             text={'learn more'}
                             className="uppercase"
+                            href={slice?.primary?.buttonvalue ?? ''}
                         />
                     </div>
                     <div className="min-w-[280px] min-h-[380px] lg:min-h-[500px] relative flex flex-col items-end">

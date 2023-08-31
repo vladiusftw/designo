@@ -4,6 +4,76 @@ import type * as prismic from '@prismicio/client'
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
+type AboutDocumentDataSlicesSlice =
+    | AboutHeroSlice
+    | AboutTalentSlice
+    | LocationsSlice
+    | TitleDescBtnSlice
+
+/**
+ * Content for About documents
+ */
+interface AboutDocumentData {
+    /**
+     * Slice Zone field in *About*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>
+    /**
+     * Meta Description field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: about.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField
+
+    /**
+     * Meta Image field in *About*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>
+
+    /**
+     * Meta Title field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: about.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_title: prismic.KeyTextField
+}
+
+/**
+ * About document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithoutUID<
+        Simplify<AboutDocumentData>,
+        'about',
+        Lang
+    >
+
 type HomeDocumentDataSlicesSlice =
     | TitleDescImgBtnSlice
     | ServicesSlice
@@ -69,6 +139,68 @@ interface HomeDocumentData {
  */
 export type HomeDocument<Lang extends string = string> =
     prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>
+
+type LocDocumentDataSlicesSlice = LocItemSlice | TitleDescBtnSlice
+
+/**
+ * Content for Location documents
+ */
+interface LocDocumentData {
+    /**
+     * Slice Zone field in *Location*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<LocDocumentDataSlicesSlice>
+    /**
+     * Meta Description field in *Location*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: loc.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField
+
+    /**
+     * Meta Image field in *Location*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>
+
+    /**
+     * Meta Title field in *Location*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: loc.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_title: prismic.KeyTextField
+}
+
+/**
+ * Location document from Prismic
+ *
+ * - **API ID**: `loc`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LocDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithoutUID<Simplify<LocDocumentData>, 'loc', Lang>
 
 /**
  * Item in *Navigation → navLinks*
@@ -349,9 +481,318 @@ export type ServicesDocument<Lang extends string = string> =
     >
 
 export type AllDocumentTypes =
+    | AboutDocument
     | HomeDocument
+    | LocDocument
     | NavigationDocument
     | ServicesDocument
+
+/**
+ * Primary content in *AboutHero → Primary*
+ */
+export interface AboutHeroSliceDefaultPrimary {
+    /**
+     * title field in *AboutHero → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_hero.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * desc field in *AboutHero → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_hero.primary.desc
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    desc: prismic.KeyTextField
+
+    /**
+     * img field in *AboutHero → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_hero.primary.img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for AboutHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<AboutHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *AboutHero*
+ */
+type AboutHeroSliceVariation = AboutHeroSliceDefault
+
+/**
+ * AboutHero Shared Slice
+ *
+ * - **API ID**: `about_hero`
+ * - **Description**: AboutHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeroSlice = prismic.SharedSlice<
+    'about_hero',
+    AboutHeroSliceVariation
+>
+
+/**
+ * Primary content in *AboutTalent → Primary*
+ */
+export interface AboutTalentSliceDefaultPrimary {
+    /**
+     * title field in *AboutTalent → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_talent.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * desc field in *AboutTalent → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_talent.primary.desc
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    desc: prismic.KeyTextField
+
+    /**
+     * img field in *AboutTalent → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_talent.primary.img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+
+    /**
+     * imgLeft field in *AboutTalent → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: about_talent.primary.imgleft
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    imgleft: prismic.BooleanField
+}
+
+/**
+ * Default variation for AboutTalent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutTalentSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<AboutTalentSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *AboutTalent*
+ */
+type AboutTalentSliceVariation = AboutTalentSliceDefault
+
+/**
+ * AboutTalent Shared Slice
+ *
+ * - **API ID**: `about_talent`
+ * - **Description**: AboutTalent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutTalentSlice = prismic.SharedSlice<
+    'about_talent',
+    AboutTalentSliceVariation
+>
+
+/**
+ * Primary content in *LocItem → Primary*
+ */
+export interface LocItemSliceDefaultPrimary {
+    /**
+     * img field in *LocItem → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc_item.primary.img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+
+    /**
+     * title field in *LocItem → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc_item.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * imgLeft field in *LocItem → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: loc_item.primary.imgleft
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    imgleft: prismic.BooleanField
+}
+
+/**
+ * Primary content in *LocItem → Items*
+ */
+export interface LocItemSliceDefaultItem {
+    /**
+     * address field in *LocItem → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc_item.items[].address
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    address: prismic.RichTextField
+
+    /**
+     * contact field in *LocItem → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: loc_item.items[].contact
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    contact: prismic.RichTextField
+}
+
+/**
+ * Default variation for LocItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocItemSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<LocItemSliceDefaultPrimary>,
+    Simplify<LocItemSliceDefaultItem>
+>
+
+/**
+ * Slice variation for *LocItem*
+ */
+type LocItemSliceVariation = LocItemSliceDefault
+
+/**
+ * LocItem Shared Slice
+ *
+ * - **API ID**: `loc_item`
+ * - **Description**: LocItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocItemSlice = prismic.SharedSlice<
+    'loc_item',
+    LocItemSliceVariation
+>
+
+/**
+ * Primary content in *Locations → Items*
+ */
+export interface LocationsSliceDefaultItem {
+    /**
+     * img field in *Locations → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: locations.items[].img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>
+
+    /**
+     * title field in *Locations → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: locations.items[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * buttonText field in *Locations → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: locations.items[].buttontext
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    buttontext: prismic.KeyTextField
+
+    /**
+     * buttonValue field in *Locations → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: locations.items[].buttonvalue
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    buttonvalue: prismic.KeyTextField
+}
+
+/**
+ * Default variation for Locations Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Record<string, never>,
+    Simplify<LocationsSliceDefaultItem>
+>
+
+/**
+ * Slice variation for *Locations*
+ */
+type LocationsSliceVariation = LocationsSliceDefault
+
+/**
+ * Locations Shared Slice
+ *
+ * - **API ID**: `locations`
+ * - **Description**: Locations
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationsSlice = prismic.SharedSlice<
+    'locations',
+    LocationsSliceVariation
+>
 
 /**
  * Primary content in *Properties → Items*
@@ -783,9 +1224,15 @@ declare module '@prismicio/client' {
 
     namespace Content {
         export type {
+            AboutDocument,
+            AboutDocumentData,
+            AboutDocumentDataSlicesSlice,
             HomeDocument,
             HomeDocumentData,
             HomeDocumentDataSlicesSlice,
+            LocDocument,
+            LocDocumentData,
+            LocDocumentDataSlicesSlice,
             NavigationDocument,
             NavigationDocumentData,
             NavigationDocumentDataSlicesSlice,
@@ -793,6 +1240,18 @@ declare module '@prismicio/client' {
             ServicesDocumentData,
             ServicesDocumentDataSlicesSlice,
             AllDocumentTypes,
+            AboutHeroSlice,
+            AboutHeroSliceVariation,
+            AboutHeroSliceDefault,
+            AboutTalentSlice,
+            AboutTalentSliceVariation,
+            AboutTalentSliceDefault,
+            LocItemSlice,
+            LocItemSliceVariation,
+            LocItemSliceDefault,
+            LocationsSlice,
+            LocationsSliceVariation,
+            LocationsSliceDefault,
             PropertiesSlice,
             PropertiesSliceVariation,
             PropertiesSliceDefault,

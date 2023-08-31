@@ -1,0 +1,48 @@
+{
+  "id": "locations",
+  "type": "SharedSlice",
+  "name": "Locations",
+  "description": "Locations",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "img": {
+          "type": "Image",
+          "config": {
+            "label": "img",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "buttontext": {
+          "type": "Text",
+          "config": {
+            "label": "buttonText",
+            "placeholder": ""
+          }
+        },
+        "buttonvalue": {
+          "type": "Text",
+          "config": {
+            "label": "buttonValue",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

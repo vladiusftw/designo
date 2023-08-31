@@ -1,0 +1,50 @@
+{
+  "id": "about_talent",
+  "type": "SharedSlice",
+  "name": "AboutTalent",
+  "description": "AboutTalent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "desc": {
+          "type": "Text",
+          "config": {
+            "label": "desc",
+            "placeholder": ""
+          }
+        },
+        "img": {
+          "type": "Image",
+          "config": {
+            "label": "img",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "imgleft": {
+          "type": "Boolean",
+          "config": {
+            "label": "imgLeft",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 import { createClient } from '@/prismicio'
+import { ServicesDocument } from '@/prismicio-types'
 import { components } from '@/slices'
-import { Content } from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
 import { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 type Params = { uid: string }
@@ -17,11 +18,14 @@ export async function generateMetadata({
     params: Params
 }): Promise<Metadata> {
     const client = createClient()
-    const page = await client.getByUID('services', params?.uid)
+    let page: ServicesDocument | null = null
+    try {
+        page = await client?.getByUID('services', params?.uid).catch()
+    } catch (e) {}
 
     return {
-        title: page.data.meta_title,
-        description: page.data.meta_description,
+        title: page?.data?.meta_title ?? '',
+        description: page?.data?.meta_description ?? '',
     }
 }
 
@@ -37,10 +41,13 @@ export async function generateStaticParams() {
 const page = async ({ params }: Props) => {
     const { uid } = params
     const client = createClient()
-    const page = await client.getByUID<Content.ServicesDocument>(
-        'services',
-        uid
-    )
+    let page: ServicesDocument | null = null
+    try {
+        page = await client.getByUID<ServicesDocument>('services', uid)
+    } catch (e) {
+        redirect('/404')
+    }
+
     return (
         <div className="flex flex-col gap-[120px] lg:gap-[160px] pb-[160px]">
             <SliceZone slices={page?.data?.slices} components={components} />

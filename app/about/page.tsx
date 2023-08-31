@@ -1,9 +1,43 @@
+import { createClient } from '@/prismicio'
+import { AboutDocument } from '@/prismicio-types'
+import { components } from '@/slices'
+import { SliceZone } from '@prismicio/react'
+import { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 type Props = {}
 
-const page = (props: Props) => {
-    return <div>test</div>
+export async function generateMetadata(): Promise<Metadata> {
+    const client = createClient()
+    let page: AboutDocument | null = null
+    try {
+        page = await client.getSingle<AboutDocument>('about')
+    } catch (e) {}
+
+    return {
+        title: page?.data?.meta_title?.toString() ?? '',
+        description: page?.data?.meta_description?.toString() ?? '',
+        openGraph: {
+            title: page?.data?.meta_title?.toString() ?? '',
+            description: page?.data?.meta_description?.toString() ?? '',
+        },
+    }
+}
+
+const page = async (props: Props) => {
+    const client = createClient()
+    let page: AboutDocument | null = null
+    try {
+        page = await client.getSingle<AboutDocument>('about')
+    } catch (e) {
+        redirect('/404')
+    }
+    return (
+        <div className="flex flex-col gap-[120px] lg:gap-[160px] pb-[160px]">
+            <SliceZone slices={page?.data?.slices} components={components} />
+        </div>
+    )
 }
 
 export default page

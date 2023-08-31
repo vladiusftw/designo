@@ -13,3 +13,7 @@ h2 {
 h3 {
     @apply text-[20px] font-medium leading-[26px] tracking-[5px];
 }
+
+body {
+    @apply text-[15px] md:text-[16px] leading-[26px];
+}

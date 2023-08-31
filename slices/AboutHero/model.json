@@ -1,0 +1,41 @@
+{
+  "id": "about_hero",
+  "type": "SharedSlice",
+  "name": "AboutHero",
+  "description": "AboutHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "desc": {
+          "type": "Text",
+          "config": {
+            "label": "desc",
+            "placeholder": ""
+          }
+        },
+        "img": {
+          "type": "Image",
+          "config": {
+            "label": "img",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
