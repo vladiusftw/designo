@@ -32,6 +32,7 @@ const Header = ({ headerLogo, links }: Props) => {
                     {links.map((link: NavigationDocumentDataNavlinksItem) => {
                         return (
                             <Link
+                                key={link?.value}
                                 href={link?.value ?? '#'}
                                 className="text-[14px] text-dark-grey uppercase"
                             >
@@ -42,7 +43,7 @@ const Header = ({ headerLogo, links }: Props) => {
                 </div>
 
                 <div className="flex md:hidden">
-                    <Hamburger />
+                    <Hamburger links={links} />
                 </div>
             </div>
         </header>

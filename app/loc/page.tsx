@@ -18,9 +18,22 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: page?.data?.meta_title?.toString() ?? '',
         description: page?.data?.meta_description?.toString() ?? '',
+        keywords: [
+            'web development',
+            'application development',
+            'graphic design',
+        ],
         openGraph: {
+            type: 'website',
+            url: process.env.VERCEL_URL ?? '',
             title: page?.data?.meta_title?.toString() ?? '',
             description: page?.data?.meta_description?.toString() ?? '',
+            images: [
+                {
+                    url: page?.data?.meta_image?.url ?? '',
+                    alt: page?.data?.meta_image?.alt ?? '',
+                },
+            ],
         },
     }
 }

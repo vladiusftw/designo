@@ -1,26 +1,18 @@
 import { createClient } from '@/prismicio'
-import { ServicesDocument } from '@/prismicio-types'
+import { ContactDocument } from '@/prismicio-types'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
-type Params = { uid: string }
+type Props = {}
 
-type Props = {
-    params: Params
-}
-
-export async function generateMetadata({
-    params,
-}: {
-    params: Params
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     const client = createClient()
-    let page: ServicesDocument | null = null
+    let page: ContactDocument | null = null
     try {
-        page = await client?.getByUID('services', params?.uid).catch()
+        page = await client.getSingle<ContactDocument>('contact')
     } catch (e) {}
 
     return {
@@ -46,25 +38,14 @@ export async function generateMetadata({
     }
 }
 
-export async function generateStaticParams() {
+const page = async (props: Props) => {
     const client = createClient()
-    const pages = await client.getAllByType('services')
-
-    return pages.map((page) => {
-        return { uid: page.uid }
-    })
-}
-
-const page = async ({ params }: Props) => {
-    const { uid } = params
-    const client = createClient()
-    let page: ServicesDocument | null = null
+    let page: ContactDocument | null = null
     try {
-        page = await client.getByUID<ServicesDocument>('services', uid)
+        page = await client.getSingle<ContactDocument>('contact')
     } catch (e) {
         redirect('/404')
     }
-
     return (
         <div className="flex flex-col gap-[120px] lg:gap-[160px] pb-[160px]">
             <SliceZone slices={page?.data?.slices} components={components} />
