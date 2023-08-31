@@ -1,14 +1,11 @@
 import Header from '@/components/layout/header'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Footer from '@/components/layout/footer'
 import { createClient } from '@/prismicio'
 import { Content } from '@prismicio/client'
 import { NavigationDocument } from '@/prismicio-types'
 import { redirect } from 'next/navigation'
-
-export const revalidate = 30
 
 export const metadata: Metadata = {
     title: 'Create Next App',
